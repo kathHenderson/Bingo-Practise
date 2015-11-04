@@ -9,7 +9,7 @@
             ext: '.css',
             options: {
                 csslint:{
-                    'adjoining-classes': false,
+                    'adjoining-classes': false
 
                 }
             }

@@ -9,6 +9,7 @@
                     'bower_components/angular-mocks/angular-mocks.js',
                     'bower_components/angular-ui-router/release/angular-ui-router.js',
                     'main-app/app/scripts/script.js',
+                    'main-app/app/scripts/login/*.js',
                     'main-app/app/scripts/controllers/main-controller.js',
                     'main-app/app/scripts/core/**/*.js',
                     'main-app/app/mocks/*.js',
