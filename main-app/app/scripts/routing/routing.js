@@ -17,6 +17,14 @@
                     templateProvider: function($templateCache){
                         return $templateCache.get('html/lobby.html');
                     }
+                })
+                .state('gameboard', {
+                    url: '/gameboard',
+                    controller: 'GameCallsController',
+                    templateProvider: function ($templateCache){
+                        return $templateCache.get('html/gameboard.html');
+                    }
                 });
+
         });
 })();

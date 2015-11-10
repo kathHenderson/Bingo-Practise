@@ -36,8 +36,20 @@
                         'content-type': 'application/json'
                     }
                 };
-
                 return me.callGameService(req);
             };
+
+            me.getNextGame = function(token){
+                var req = {
+                    method: 'GET',
+                    url: 'http://eutaveg-01.tombola.emea:30069/game/next',
+                    headers: {
+                        'x-token': token,
+                        'content-type': 'application.json'
+                    }
+                };
+                return me.callGameService(req);
+            };
+
         }]);
 })();
