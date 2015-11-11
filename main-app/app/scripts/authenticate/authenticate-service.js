@@ -19,12 +19,15 @@
                 };
 
                 me.logoutFunction = function() {
-                    bingoApiService.makeLogoutRequest(userData.data.token);
-                    $state.go('login');
-                    console.log(userData);
-                    me.isAuthenticated = function(userData){
-                        return userData.data.token;
-                    };
+                    bingoApiService.makeLogoutRequest(userData.data.token)
+                        .then(function(data){
+                            userData.data = data.payload;
+                            $state.go('login');
+                            console.log(userData);
+                            me.isAuthenticated = function(userData){
+                                return userData.data.token;
+                            };
+                        });
                 };
 
                 me.callNewGame = function(){
@@ -37,6 +40,19 @@
                             };
                         });
                 };
+
+                    //me.gameCallsCaller = function(){
+                    //  bingoApiService.getGameCalls(userData.data.token)
+                    //      .then(function(data){
+                    //          userData.data = data.payload;
+                    //          $state.go('gameboard');
+                    //          me.isAuthenticated = function(userData){
+                    //              return userData.data.token;
+                    //          };
+                    //      });
+                    //};
+
+
 
     }]);
 })();
