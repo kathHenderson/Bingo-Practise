@@ -32,7 +32,6 @@
                         .then(function (data){
                             userData.data = data.payload;
                             $state.go('gameboard');
-                            console.log(userData);
                             me.isAuthenticated = function(userData){
                                 return userData.data.token;
                             };

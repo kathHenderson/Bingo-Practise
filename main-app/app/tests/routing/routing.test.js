@@ -41,6 +41,14 @@
             state.templateProvider($templateCache).should.equal($templateCache.get('html/lobby.html'));
         });
 
+        it('Make sure the gameboard is equal to gameboard', function () {
+            var state = $state.get('gameboard');
+            should.exist(state);
+            state.url.should.equal('/gameboard');
+            state.controller.should.equal('GameCallsController');
+            state.templateProvider($templateCache).should.equal($templateCache.get('html/gameboard.html'));
+        });
+
 
         afterEach(function(){
             sandbox.restore();
