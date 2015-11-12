@@ -14,7 +14,7 @@
             src: '.build/main-app/app/sounds'
         },
         html: {
-            src: '.build/main-app/app/html'
+            src: '.build/main-app/app/partials'
         }
     };
 })();

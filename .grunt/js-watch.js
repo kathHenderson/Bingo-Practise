@@ -10,7 +10,7 @@
             tasks: ['jsFiles']
         },
         htmlWatch: {
-            files: ['main-app/app/index.html', 'main-app/app/html/**/*.html'],
+            files: ['main-app/app/index.html', 'main-app/app/partials/**/*.html'],
             tasks: ['htmlFiles']
         },
         karmaWatch: {
