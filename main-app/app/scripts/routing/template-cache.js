@@ -11,6 +11,8 @@
             $templateCache.put('html/lobby.html', '<h2>Welcome to the Bingo!</h2>' +
                 '<br><button type="submit">New Game</button>' +
                 '<button type="button" ng-click="logoutFunction()">Logout</button>');
+            $templateCache.put('html/gameboard.html', '<h2>Game Ticket</h2>' +
+                '');
         }
         ]);
 })();
