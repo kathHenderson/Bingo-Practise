@@ -51,18 +51,31 @@
                 return me.callGameService(req);
             };
 
-            me.getGameCalls = function(gameId, userId, balance, callNumber){
+            me.buyTicket = function(token, balance, userId){
                 var req = {
                     method: 'POST',
-                    url: 'http://eutaveg-01.tombola.emea:30069/game/getcall',
-                    headers: {
+                    url: 'http://eutaveg-01.tombola.emea:30069/game/buyticket',
+                    header: {
                         'x-token': token,
                         'content-type': 'application.json'
                     },
-                    data: {"gameId": gameId, "userId": userId, "balance": balance, "callNumber": callNumber}
+                    data: {'gameId': 1, 'userId': userId, 'balance': balance}
                 };
                 return me.callGameService(req);
             };
+
+            //me.getGameCalls = function(gameId, userId, balance, callNumber){
+            //    var req = {
+            //        method: 'POST',
+            //        url: 'http://eutaveg-01.tombola.emea:30069/game/getcall',
+            //        headers: {
+            //            'x-token': token,
+            //            'content-type': 'application.json'
+            //        },
+            //        data: {"gameId": gameId, "userId": userId, "balance": balance, "callNumber": callNumber}
+            //    };
+            //    return me.callGameService(req);
+            //};
 
         }]);
 })();

@@ -41,6 +41,10 @@
                         });
                 };
 
+                me.buyingtheTicket = function(){
+                   bingoApiService.buyTicket();
+                };
+
                     //me.gameCallsCaller = function(){
                     //  bingoApiService.getGameCalls(userData.data.token)
                     //      .then(function(data){

@@ -15,8 +15,8 @@
                 '<br><button type="button" ng-controller="GameCallsController" ng-click="authenticationService.callNewGame()">New Game</button>' +
                 '<button type="button" ng-controller="LoginController" ng-click="authenticationService.logoutFunction()">Logout</button>');
 
-            $templateCache.put('html/gameboard.html', '<h2>Game Ticket</h2>' +
-                '<h3>Game Ticket Goes here</h3>' +
+            $templateCache.put('html/gameboard.html', '<h2>Number Being Called</h2>' +
+                '<bingo-ticket></bingo-ticket>' +
                 '<br><button type="button" ng-controller="GameCallsController" ng-click="authenticationService.callNewGame()">New Game</button>' +
                 '<button type="button" ng-controller="LoginController" ng-click="authenticationService.logoutFunction()">Logout</button>');
 
