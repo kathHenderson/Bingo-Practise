@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html ng-app="Tombola.BingoServer" ng-controller="MainController as main">
-<head>
-    <link rel="stylesheet" type="text/css" ng-href="css/main.css">
-    <script src="thirdparty/bower_components/angular/angular.min.js"></script>
-    <script src="thirdparty/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="thirdparty/bower_components/angular-mocks/angular-mocks.js"></script>
-    <title>Bingo Game</title>
-</head>
-<body>
+<html ng-app="Tombola.BingoClient" ng-controller="MainController as main">
+    <head>
+        <link rel="stylesheet" type="text/css" ng-href="css/main.css">
+        <script src="thirdparty/bower_components/angular/angular.min.js"></script>
+        <script src="thirdparty/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <title>Bingo Game</title>
+    </head>
+    <body>
+        <div class="mainContainer">
+            <h1>Bingo Client</h1>
+            <div ui-view></div>
 
-</body>
+        </div>
+        <script src="scripts/app.js"></script>
+    </body>
 </html>
