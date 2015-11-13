@@ -6,12 +6,27 @@ var mocks = {
 
     bingoApiService: {
         makeLoginRequest: function (){},
-        callGameService: function (){},
-        makeLogoutRequest: function (){}
+        callNewGame: function (){},
+        makeLogoutRequest: function (){},
+        getNextGame: function(){}
     },
 
     proxy: {
 
+    },
+
+    authenticationService: {
+        login: function(){},
+        logoutFunction: function(){},
+        callNewGame: function(){}
+    },
+
+    callNewGame: {
+        proxy: function(){}
+    },
+
+    logoutFunction: {
+        proxy: function(){}
     },
 
     login: {

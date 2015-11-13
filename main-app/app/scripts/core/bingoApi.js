@@ -36,8 +36,33 @@
                         'content-type': 'application/json'
                     }
                 };
-
                 return me.callGameService(req);
             };
+
+            me.getNextGame = function(token){
+                var req = {
+                    method: 'GET',
+                    url: 'http://eutaveg-01.tombola.emea:30069/game/next',
+                    headers: {
+                        'x-token': token,
+                        'content-type': 'application.json'
+                    }
+                };
+                return me.callGameService(req);
+            };
+
+            me.getGameCalls = function(gameId, userId, balance, callNumber){
+                var req = {
+                    method: 'POST',
+                    url: 'http://eutaveg-01.tombola.emea:30069/game/getcall',
+                    headers: {
+                        'x-token': token,
+                        'content-type': 'application.json'
+                    },
+                    data: {"gameId": gameId, "userId": userId, "balance": balance, "callNumber": callNumber}
+                };
+                return me.callGameService(req);
+            };
+
         }]);
 })();
