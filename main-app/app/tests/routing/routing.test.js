@@ -19,6 +19,7 @@
             });
             $templateCache.put('html/login.html', 'html/login.html');
             $templateCache.put('html/lobby.html', 'html/lobby.html');
+            $templateCache.put('html/gameboard.html', 'html/gameboard.html');
 
             spyonState = sinon.sandbox.spy(mocks.fakeState, 'go');
             $rootscope.$digest();

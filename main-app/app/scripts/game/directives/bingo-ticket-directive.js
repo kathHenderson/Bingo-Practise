@@ -4,7 +4,7 @@
         .directive('bingoTicket', function (){
             return {
                 restrict: 'E',
-                templateUrl: 'partials/bingo-ticket.html'
+                templateUrl: '../../../partials/bingo-ticket.html'
             };
         });
 })();
