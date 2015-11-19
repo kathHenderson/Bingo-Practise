@@ -3,10 +3,13 @@
         angular.module('Tombola.BingoClient')
             .service('AuthenticationService',['$state', 'BingoAuthenticationProxy', 'UserData',
                 function($state, bingoAuthenticationProxy, userData){
-                var me = this;
+                var me = this,
+                    clearAuthenticationDetails = function(){
+                        me.username = '';
+                        me.password = '';
+                    };
 
-                me.username = '';
-                me.password = '';
+                clearAuthenticationDetails();
                 me.token = '';
 
                 me.isAuthenticated = function(){
@@ -15,10 +18,9 @@
 
                 me.login = function(){
                     bingoAuthenticationProxy.makeLoginRequest(me.username, me.password)
-                        .then(function (authenticationInformation) {
-                            //TODO: clear username and password values.
-                            me.token = authenticationInformation.token;
-                            userData.update(authenticationInformation.userInformation.username, authenticationInformation.userInformation.balance);
+                        .then(function (token) {
+                            me.token = token;
+                            clearAuthenticationDetails();
                             $state.go('lobby');
                         });
                 };

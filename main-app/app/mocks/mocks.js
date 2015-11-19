@@ -16,7 +16,8 @@ var mocks = {
     },
 
     userData: {
-
+        update: function(){},
+        reset: function(){}
     },
 
     authenticationService: {
@@ -25,13 +26,6 @@ var mocks = {
         callNewGame: function(){}
     },
 
-    authenticationResponseConverter: {
-        convertLoginResponse: function(response){}
-    },
-
-    convertLoginResponse: {
-
-    },
 
     callNewGame: {
         proxy: function(){}
