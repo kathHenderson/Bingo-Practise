@@ -1,15 +1,16 @@
 (function () {
     'use strict';
 
-    describe('Test game-constants', function () {
+    describe.skip('Test base-url constants', function () {
         var data;
         beforeEach(function () {
             module('Tombola.BingoClient');
             inject(function ($injector) {
-                data = $injector.get('UserData');
+                data = $injector.get('BaseUrl');
             });
         });
-        it('Ensure UserData contains data', function () {
+
+        it('Ensure BaseUrl contains data', function () {
             data.should.equal(data);
         });
 

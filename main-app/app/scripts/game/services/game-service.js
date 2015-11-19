@@ -12,7 +12,7 @@
                 };
 
                 me.callNewGame = function(){
-                    bingoApiService.getNextGame(userData.data.token)
+                    bingoAuthenticationProxy.getNextGame(userData.data.token)
                         .then(function (data){
                             userData.data = data.payload;
                             $state.go('gameboard');
@@ -20,19 +20,19 @@
                 };
 
                 me.buyingtheTicket = function(){
-                   bingoApiService.buyTicket();
+                    bingoAuthenticationProxy.buyTicket();
                 };
 
-                me.gameCallsCaller = function(){
-                    bingoApiService.getGameCalls(userData.data.token)
-                        .then(function(data){
-                            userData.data = data.payload;
-                            $state.go('gameboard');
-                            me.isAuthenticated = function(userData){
-                                return userData.data.token;
-                            };
-                        });
-                };
+                //me.gameCallsCaller = function(){
+                //    bingoAuthenticationProxy.getGameCalls(userData.data.token)
+                //        .then(function(data){
+                //            userData.data = data.payload;
+                //            $state.go('gameboard');
+                //            me.isAuthenticated = function(userData){
+                //                return userData.data.token;
+                //            };
+                //        });
+                //};
 
             }]);
 })();

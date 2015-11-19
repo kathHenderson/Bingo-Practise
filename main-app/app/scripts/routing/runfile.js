@@ -22,6 +22,8 @@
                 '<button type="button" ng-click="authenticationService.logoutFunction()">Logout</button>');
 
             $rootScope.$on('$routeChangeStart', function(event){
+                //TODO: This isnt passing through the functions
+                console.log('********');
                 if(!authenticationService.isAuthenticated()){
                     $location.path('/login');
                 }
