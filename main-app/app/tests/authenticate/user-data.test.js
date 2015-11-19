@@ -24,5 +24,12 @@
             data.balance.should.equal(2);
         });
 
+        it('Reset functionality works', function(){
+            data.update('Foo', 2);
+            data.reset();
+            data.username.should.equal('');
+            data.balance.should.equal(0);
+        });
+
     });
 })();
