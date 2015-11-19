@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    describe.skip('Test base-url constants', function () {
+    describe('Test base-url constants', function () {
         var data;
         beforeEach(function () {
             module('Tombola.BingoClient');
@@ -18,18 +18,10 @@
            data.balance.should.equal(0);
         });
 
-        it('Username should be an empty string', function(){
-            data.username.should.equal('');
-        });
-
-        it('Username update should be equal to username', function(){
+        it('Username updates correctly', function(){
             data.update('Foo Bar', 2);
             data.username.should.equal('Foo Bar');
-        });
-
-        it('Balance update should be equal to balance', function(){
-            data.update('Foo Bar', null);
-            data.balance.should.equal(0);
+            data.balance.should.equal(2);
         });
 
     });

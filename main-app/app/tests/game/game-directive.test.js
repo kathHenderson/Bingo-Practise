@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    describe.skip('testing directive for bingoticket', function(){
+    describe('testing directive for bingoticket', function(){
         var directiveElement,
             element,
             $compile,
