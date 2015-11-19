@@ -1,5 +1,5 @@
 (function() {
     'use strict';
     angular.module('Tombola.BingoClient')
-        .value('UserData', {data: {}});
+        .value('BaseUrl', 'http://localhost:30069');
 })();

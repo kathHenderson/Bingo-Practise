@@ -4,7 +4,7 @@ var mocks = {
         go: function(){}
     },
 
-    bingoApiService: {
+    bingoAuthenticationProxy: {
         makeLoginRequest: function (){},
         callNewGame: function (){},
         makeLogoutRequest: function (){},
@@ -15,11 +15,17 @@ var mocks = {
 
     },
 
+    userData: {
+        update: function(){},
+        reset: function(){}
+    },
+
     authenticationService: {
         login: function(){},
         logoutFunction: function(){},
         callNewGame: function(){}
     },
+
 
     callNewGame: {
         proxy: function(){}
