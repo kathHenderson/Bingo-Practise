@@ -13,6 +13,7 @@
                 me.token = '';
 
                 me.isAuthenticated = function(){
+                    console.log('********');
                     return token !== '';
                 };
 

@@ -11,6 +11,10 @@ var mocks = {
         getNextGame: function(){}
     },
 
+    bingoApiProxy: {
+        buildRequest: function(){}
+    },
+
     proxy: {
 
     },

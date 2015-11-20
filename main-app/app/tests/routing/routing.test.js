@@ -1,7 +1,7 @@
 //TODO: Reinstate when figured out why it works
 (function () {
     'use strict';
-    describe.skip('Game routing tester', function () {
+    describe('Game routing tester', function () {
         var $state,
             spyonState,
             $rootscope,
@@ -31,7 +31,7 @@
             var state = $state.get('login');
             should.exist(state);
             state.url.should.equal('/login');
-            //state.controller.should.equal('LoginController');
+            state.controller.should.equal('MainController');
             state.templateProvider($templateCache).should.equal($templateCache.get('html/login.html'));
         });
 
@@ -39,7 +39,7 @@
             var state = $state.get('lobby');
             should.exist(state);
             state.url.should.equal('/lobby');
-            //state.controller.should.equal('MainController');
+            state.controller.should.equal('MainController');
             state.templateProvider($templateCache).should.equal($templateCache.get('html/lobby.html'));
         });
 
@@ -47,7 +47,7 @@
             var state = $state.get('gameboard');
             should.exist(state);
             state.url.should.equal('/gameboard');
-            //state.controller.should.equal('GameCallsController');
+            state.controller.should.equal('MainController');
             state.templateProvider($templateCache).should.equal($templateCache.get('html/gameboard.html'));
         });
 

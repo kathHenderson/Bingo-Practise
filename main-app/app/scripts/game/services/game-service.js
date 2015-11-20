@@ -1,3 +1,4 @@
+//TODO: this is nowhere near done, finish itttttttt
 (function () {
     'use strict';
     angular.module('Tombola.BingoClient')

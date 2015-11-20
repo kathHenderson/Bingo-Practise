@@ -3,6 +3,7 @@
     describe.skip('Test the API wrapper service', function () {
         var $httpBackend,
             proxy,
+            auth,
             responseData = {"username": "drwho", "balance": 20000};
 
         beforeEach(function () {
@@ -10,6 +11,7 @@
             inject(function ($injector) {
                 $httpBackend = $injector.get('$httpBackend');
                 proxy = $injector.get('BingoAuthenticationProxy');
+                auth = injector.get('UserAuthenticationUpdater');
             });
         });
 
@@ -23,7 +25,6 @@
             });
             $httpBackend.flush();
         });
-
 
         afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();

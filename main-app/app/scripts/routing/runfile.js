@@ -23,8 +23,8 @@
 
             $rootScope.$on('$routeChangeStart', function(event){
                 //TODO: This isnt passing through the functions
-                console.log('********');
                 if(!authenticationService.isAuthenticated()){
+                    console.log('********');
                     $location.path('/login');
                 }
             });
