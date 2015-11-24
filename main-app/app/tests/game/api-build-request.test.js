@@ -1,39 +1,30 @@
 (function () {
     'use strict';
-    describe('Test the API Bingo Proxy service', function(){
+    describe('Test the API wrapper service', function(){
         var $httpBackend,
             sandbox,
-            bingoApiProxy,
+            apiBuildRequest,
             apiBuildRequestProxySpy;
 
         beforeEach(function(){
             module('Tombola.BingoClient', function($provide){
-               $provide.value('ApiBuildRequest', mocks.apiBuildRequestProxy);
+                $provide.value('ApiBuildRequest', mocks.apiBuildRequestProxy);
             });
             inject(function ($injector) {
                 sandbox = sinon.sandbox.create();
                 apiBuildRequestProxySpy = sinon.sandbox.spy(mocks.apiBuildRequestProxy, 'buildRequest');
                 $httpBackend = $injector.get('$httpBackend');
-                bingoApiProxy = $injector.get('BingoApiProxy');
+                apiBuildRequest = $injector.get('ApiBuildRequest');
             });
         });
 
         it('The Api service responds with the correct build functionality', function(){
             var requestMock = mocks.apiBuildRequestProxy.buildRequest();
             sandbox.restore();
-            $httpBackend
-                .expectPOST(requestMock.url)
-                .respond('response');
-            var returnPromise = bingoApiProxy.call('POST', '/users/login', 'token', 'data');
-            returnPromise.then(function(response){
-                response.should.equal('response');
-            });
-            $httpBackend.flush();
-            //TODO: expect the mock.apiBuildRequestProxy.buildRequest to be called.
-            //mocks.apiBuildRequestProxy,buildRequest();
+            var request = apiBuildRequest.buildRequest();
+            request.should.deep.equal(requestMock);
+
         });
-
-
 
         afterEach(function(){
             $httpBackend.verifyNoOutstandingExpectation();

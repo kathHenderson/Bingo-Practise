@@ -13,6 +13,7 @@
                     'main-app/app/scripts/lobby/**/*.js',
                     'main-app/app/scripts/routing/*.js',
                     'main-app/app/scripts/core/**/**/*.js',
+                    'main-app/app/scripts/core/game/services/*.js',
                     'main-app/app/scripts/authenticate/**/*.js',
                     'main-app/app/scripts/controllers/main-controller.js',
                     'main-app/app/mocks/*.js',

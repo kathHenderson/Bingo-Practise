@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    describe.skip('GameCallsController tester', function () {
+    describe('GameCallsController tester', function () {
         var $scope,
             controller;
 

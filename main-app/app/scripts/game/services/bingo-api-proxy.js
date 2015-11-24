@@ -1,34 +1,15 @@
 (function () {
     'use strict';
     angular.module('Tombola.BingoClient')
-        .service('BingoApiProxy', ['$http', '$q', 'BaseUrl', function ($http, $q, baseUrl){
-            var me = this,
-                buildRequest = function(method, urlEndpoint, xToken, data){
-                    var request = {
-                        method: method,
-                        url: baseUrl + urlEndpoint,
-                        headers: {
-                            'accept': 'application/json',
-                            'content-type': 'application/json'
-                        }
-                    };
-
-                    if(xToken){
-                        request.headers['x-token'] = xToken;
-                    }
-
-                    if(data){
-                       request.data = data;
-                    }
-                    return request;
-                };
+        .service('BingoApiProxy', ['$http', '$q', 'ApiBuildRequest', function ($http, $q, apiBuildRequest){
+            var me = this;
 
             me.call = function (method, urlEndpoint, xToken, data){
                 var deferred = $q.defer(),
-                    request = buildRequest(method, urlEndpoint, xToken, data);
+                    request = apiBuildRequest.buildRequest(method, urlEndpoint, xToken, data);
 
                 $http(request)
-                    .then(function bingoapi(response){
+                    .then(function (response){
                         deferred.resolve(response.data);
                     })
                     .catch(function (response){

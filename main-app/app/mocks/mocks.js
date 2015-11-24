@@ -13,6 +13,16 @@ var mocks = {
 
     bingoApiProxy: {
         buildRequest: function(){}
+
+    },
+
+    apiBuildRequestProxy: {
+        buildRequest: function(){
+            return {
+                url: 'Foo',
+                method: 'POST'
+            };
+        }
     },
 
     proxy: {

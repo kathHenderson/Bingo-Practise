@@ -1,17 +1,18 @@
 (function () {
     'use strict';
-    describe.skip('Test the API wrapper service', function () {
+    describe('Test the API wrapper service', function () {
         var $httpBackend,
             proxy,
             auth,
             responseData = {"username": "drwho", "balance": 20000};
 
         beforeEach(function () {
-            module('Tombola.BingoClient');
+            module('Tombola.BingoClient', function($provide){
+                $provide.value('GameResponseConverter')
+            });
             inject(function ($injector) {
                 $httpBackend = $injector.get('$httpBackend');
                 proxy = $injector.get('BingoAuthenticationProxy');
-                auth = injector.get('UserAuthenticationUpdater');
             });
         });
 
@@ -20,6 +21,7 @@
                 .expectPOST('http://localhost:30069/users/login', {"username": "drwho", "password": "tardis123!"})
                 .respond(responseData);
             var returnPromise = proxy.makeLoginRequest("drwho", "tardis123!");
+            console.log(proxy.makeLoginRequest);
             returnPromise.then(function (response) {
                 response.should.deep.equal(responseData);
             });
