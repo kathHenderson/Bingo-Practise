@@ -2,13 +2,12 @@
     'use strict';
     describe('Test the API wrapper service', function () {
         var $httpBackend,
-            proxy,
-            auth,
-            responseData = {"username": "drwho", "balance": 20000};
+            proxy;
 
         beforeEach(function () {
             module('Tombola.BingoClient', function($provide){
-                $provide.value('GameResponseConverter')
+                $provide.value(mocks.bingoApiProxy, 'call');
+                $provide.value(mocks.userAuthenticationUpdater);
             });
             inject(function ($injector) {
                 $httpBackend = $injector.get('$httpBackend');
@@ -18,12 +17,20 @@
 
         it('The Api service responds with the correct value in a login request', function () {
             $httpBackend
-                .expectPOST('http://localhost:30069/users/login', {"username": "drwho", "password": "tardis123!"})
-                .respond(responseData);
+                .expectPOST('http://localhost:30069/users/login', {"username":"drwho", "password":"tardis123!"})
+                .respond( {
+                    "message": "LoginSuccess",
+                    "payload": {
+                        "user": {
+                            "username": "drwho",
+                            "balance": 20000,
+                            "token": "response"
+                        }
+                    }
+                });
             var returnPromise = proxy.makeLoginRequest("drwho", "tardis123!");
-            console.log(proxy.makeLoginRequest);
             returnPromise.then(function (response) {
-                response.should.deep.equal(responseData);
+                response.should.equal('response');
             });
             $httpBackend.flush();
         });

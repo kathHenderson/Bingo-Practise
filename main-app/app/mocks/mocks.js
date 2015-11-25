@@ -12,9 +12,11 @@ var mocks = {
     },
 
     bingoApiProxy: {
-        buildRequest: function(){}
+        call: function(){}
 
     },
+
+    userAuthenticationUpdater: function(){},
 
     apiBuildRequestProxy: {
         buildRequest: function(){
@@ -51,6 +53,28 @@ var mocks = {
 
     login: {
         proxy: function(){}
+    },
+
+
+    gameResponseConverter: {
+        convertGameResponse: function(){
+            return {
+                token: 'token',
+                userInformation: {
+                    username: 'username',
+                    balance: 20000
+                }
+            };
+        }
+    },
+
+    makeLoginRequest: {
+        bingoApiProxy: function(){
+            return {
+                username: 'drwho',
+                password: 'tardis123!'
+            }
+        }
     }
 
 };
