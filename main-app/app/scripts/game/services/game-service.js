@@ -20,8 +20,13 @@
                         });
                 };
 
+                //TODO: Finish this portion of the coding; it's game implementation
                 me.buyingtheTicket = function(){
-                    bingoAuthenticationProxy.buyTicket();
+                    bingoAuthenticationProxy.buyTicket(userData.data.token)
+                        .then(function(data){
+                            userData.data = data.payload;
+
+                        });
                 };
 
                 //me.gameCallsCaller = function(){

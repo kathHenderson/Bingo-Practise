@@ -13,18 +13,17 @@
             $templateCache.put('html/lobby.html', '<h2>Welcome to the Bingo!</h2>' +
                 '<h3>Countdown to next game:</h3>' +
                 'number' +
-                '<br><button type="button" ng-click="authenticationService.callNewGame()">New Game</button>' +
+                '<br><button type="button" ng-click="bingoService.callNewGame()">New Game</button>' +
                 '<button type="button" ng-click="authenticationService.logoutFunction()">Logout</button>');
 
             $templateCache.put('html/gameboard.html', '<h2>Number Being Called</h2>' +
                 '<bingo-ticket></bingo-ticket>' +
-                '<br><button type="button" ng-click="authenticationService.callNewGame()">New Game</button>' +
+                '<br><button type="button" ng-click="bingoService.callNewGame()">New Game</button>' +
                 '<button type="button" ng-click="authenticationService.logoutFunction()">Logout</button>');
 
             $rootScope.$on('$routeChangeStart', function(event){
                 //TODO: This isnt passing through the functions
                 if(!authenticationService.isAuthenticated()){
-                    console.log('********');
                     $location.path('/login');
                 }
             });

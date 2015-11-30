@@ -13,10 +13,9 @@ var mocks = {
 
     bingoApiProxy: {
         call: function(){}
-
     },
 
-    userAuthenticationUpdater: function(){},
+    userAuthenticationUpdater:  function (){},
 
     apiBuildRequestProxy: {
         buildRequest: function(){
