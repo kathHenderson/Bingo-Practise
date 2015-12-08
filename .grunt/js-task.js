@@ -8,7 +8,7 @@
             src: '.grunt/**/*.js'
         },
         checkKarma: {
-            src: 'main-app/app/tests/**/*.js',
+            src: 'main-app/app/tests/**/**/*.js',
             options: {
                 '-W030': true,
                 "globals": {

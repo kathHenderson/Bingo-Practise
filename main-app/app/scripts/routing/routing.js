@@ -6,7 +6,7 @@
             $stateProvider
                 .state('login', {
                     url: '/login',
-                    controller: 'LoginController',
+                    controller: 'MainController',
                     templateProvider: function($templateCache){
                         return $templateCache.get('html/login.html');
                     }
@@ -20,7 +20,7 @@
                 })
                 .state('gameboard', {
                     url: '/gameboard',
-                    controller: 'GameCallsController',
+                    controller: 'MainController',
                     templateProvider: function ($templateCache){
                         return $templateCache.get('html/gameboard.html');
                     }

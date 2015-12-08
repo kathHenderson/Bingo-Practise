@@ -1,5 +1,5 @@
 (function() {
     'use strict';
     angular.module('Tombola.BingoClient')
-        .value('UserData', {data: {}});
+        .value('BaseUrl', 'http://eutaveg-01.tombola.emea:30069');
 })();
