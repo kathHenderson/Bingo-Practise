@@ -4,6 +4,10 @@ var mocks = {
         go: function(){}
     },
 
+    baseUrl:{
+
+    },
+
     bingoAuthenticationProxy: {
         makeLoginRequest: function (){},
         callNewGame: function (){},
@@ -12,7 +16,8 @@ var mocks = {
     },
 
     bingoApiProxy: {
-        call: function(){}
+        call: function(){},
+        foo:function(){} //TODO: Remove
     },
 
     userAuthenticationUpdater:  function (){},

@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+    //TODO: Inject dependencies & unskip
     describe('Test the user factory service', function () {
         var sandbox,
             userDataSpy,

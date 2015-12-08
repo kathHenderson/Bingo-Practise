@@ -1,44 +1,62 @@
 (function () {
     'use strict';
-    describe('Test the API wrapper service', function () {
+    describe.skip('Test the API wrapper service', function () {
         var $httpBackend,
             $q,
-            proxy,
+            rootScope,
+            bingoAuthenticationProxy,
             deferred,
             sandbox,
             userAuthenticationUpdaterSpy,
-            bingoApiProxySpy;
+            bingoApiProxyStub;
 
         beforeEach(function () {
-            module('Tombola.BingoClient', function($provide){
+            module('Tombola.BingoClient', function ($provide) {
                 $provide.value('UserAuthenticationUpdater', mocks.userAuthenticationUpdater);
                 $provide.value('BingoApiProxy', mocks.bingoApiProxy);
             });
             inject(function ($injector) {
-                sandbox = sinon.sandbox.create();
                 $httpBackend = $injector.get('$httpBackend');
                 $q = $injector.get('$q');
-                proxy = $injector.get('BingoAuthenticationProxy');
+                rootScope = $injector.get('$rootScope');
+                bingoAuthenticationProxy = $injector.get('BingoAuthenticationProxy');
             });
-            deferred = $q.defer();
-            mocks.bingoApiProxy.call = function(){
+
+            sandbox = sinon.sandbox.create();
+
+
+
+            userAuthenticationUpdaterSpy = sandbox.spy(mocks, 'userAuthenticationUpdater');
+            bingoApiProxyStub = sandbox.stub(mocks.bingoApiProxy, 'call', function (){
                 return deferred.promise;
-            };
-            //userAuthenticationUpdaterSpy = sinon.sandbox.spy(mocks.userAuthenticationUpdater);
-            bingoApiProxySpy = sinon.sandbox.spy(mocks.bingoApiProxy, 'call');
+            });
+
         });
 
 
         it('The Api service responds with the correct value in a login request', function () {
 
-            var returnPromise = proxy.makeLoginRequest('username', 'password');
-            bingoApiProxySpy.should.have.been.calledOnce;
+            deferred = $q.defer();
+            //deferred.promise.foo ='hiya';
+            //TODO: *****************************************
+
+
+            var returnPromise = bingoAuthenticationProxy.makeLoginRequest('username', 'password');
+            returnPromise.then(function(){
+                console.log('wrapper promise resolved*********');
+            });
+            bingoApiProxyStub.should.have.been.calledOnce.calledWithExactly('POST', '/users/login', '',
+                {"username": 'username', "password": 'password'});
+            deferred.resolve('response');
+            rootScope.$digest();
+            userAuthenticationUpdaterSpy.should.have.been.calledOnce;
 
         });
 
         afterEach(function () {
             sandbox.restore();
-            mocks.bingoApiProxy.call = function(){};
+            mocks.bingoApiProxy.call = function () {
+            };
         });
     });
 })();

@@ -1,35 +1,30 @@
 (function () {
     'use strict';
-    describe('Test the API wrapper service', function(){
-        var $httpBackend,
-            sandbox,
-            apiBuildRequest,
-            apiBuildRequestProxySpy;
+    //TODO: Inject dependencies & unskip
+    describe('Test the API wrapper service', function () {
+        var apiBuildRequest;
 
-        beforeEach(function(){
-            module('Tombola.BingoClient', function($provide){
-                $provide.value('ApiBuildRequest', mocks.apiBuildRequestProxy);
+        beforeEach(function () {
+            module('Tombola.BingoClient', function ($provide) {
+                $provide.value('BaseUrl', 'baseUrl/');
             });
             inject(function ($injector) {
-                sandbox = sinon.sandbox.create();
-                apiBuildRequestProxySpy = sinon.sandbox.spy(mocks.apiBuildRequestProxy, 'buildRequest');
-                $httpBackend = $injector.get('$httpBackend');
                 apiBuildRequest = $injector.get('ApiBuildRequest');
             });
         });
 
-        it('The Api service responds with the correct build functionality', function(){
-            var requestMock = mocks.apiBuildRequestProxy.buildRequest();
-            sandbox.restore();
-            var request = apiBuildRequest.buildRequest();
-            request.should.deep.equal(requestMock);
-
+        it('The Api service responds with the correct build functionality', function () {
+            var expectedRequest = {
+                method: 'method', url: 'baseUrl/url', headers: {
+                    accept: 'application/json',
+                    'content-type': 'application/json',
+                    'x-token': 'token'
+                },
+                data: {foo: 'blah'}
+            };
+            var request = apiBuildRequest.buildRequest('method', 'url', 'token', {'foo': 'blah'});
+            request.should.deep.equal(expectedRequest);
         });
 
-        afterEach(function(){
-            $httpBackend.verifyNoOutstandingExpectation();
-            $httpBackend.verifyNoOutstandingRequest();
-            sandbox.restore();
-        });
     });
 })();

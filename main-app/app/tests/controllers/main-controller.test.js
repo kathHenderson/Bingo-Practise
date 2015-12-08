@@ -5,14 +5,14 @@
             controller;
 
         beforeEach(function(){
-            module('Tombola.BingoClient');
+            module('Tombola.BingoClient', function($provide){
+                $provide.value('AuthenticationService', mocks.authenticationService);
+                $provide.value('UserData', mocks.userData);
+            });
             inject(function($rootScope, $controller){
                 $scope = $rootScope.$new();
-
                 controller=$controller('MainController', {
-                    $scope: $scope,
-                    AuthenticationService: mocks.authenticationService,
-                    UserData: mocks.userData
+                    $scope: $scope
                 });
             });
         });

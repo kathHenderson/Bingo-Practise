@@ -6,17 +6,20 @@
             var me = this;
 
             me.makeLoginRequest = function (username, password) {
-                var deferred = $q.defer();
-                var data = {"username": username, "password": password};
-                bingoApiProxy.call('POST', '/users/login', '', data)
-                    .then(function (response) {
+                var deferred = $q.defer(),
+                    data = {"username": username, "password": password},
+                    bingoCallPromise = bingoApiProxy.call('POST', '/users/login', '', data);
+                    bingoCallPromise.then(function (response) {
+                        //console.log('resolved*********');
                         var token = userAuthenticationUpdater(response);
                         deferred.resolve(token);
                     })
                     .catch(function (response) {
+                        //console.log('caught*********');
                         deferred.reject(response);
                     });
 
+                //console.log('returining*********');
                 return deferred.promise;
             };
 

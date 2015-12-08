@@ -4,8 +4,8 @@
     angular.module('Tombola.BingoClient')
         .service('BingoService',['$state', 'BingoAuthenticationProxy', 'UserData',
             function($state, bingoAuthenticationProxy, userData){
-                var me = this;
-
+                var me = this,
+                    clearAuthenticationDetails = function(){};
                 me.token = '';
 
                 me.isAuthenticated = function(){
@@ -16,6 +16,7 @@
                     bingoAuthenticationProxy.getNextGame(userData.data.token)
                         .then(function (data){
                             userData.data = data.payload;
+                            clearAuthenticationDetails();
                             $state.go('gameboard');
                         });
                 };
